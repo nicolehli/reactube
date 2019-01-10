@@ -22,7 +22,7 @@ class App extends React.Component {
     return (
       <div className='ui container'>
         <SearchBar uponSubmit={this.onTermSubmit} />I have{" "}
-        {this.state.videos.length} videos. (Note: I've set Max = 5)
+        {this.state.videos.length}/5 videos
         <VideoList videos={this.state.videos} />
       </div>
     );

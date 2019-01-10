@@ -7,12 +7,11 @@ import VideoItem from "./VideoItem";
 
 // Destructured above as { videos } = props,then videos = props.videos
 const VideoList = ({ videos }) => {
-  const renderList = videos.map(vid => {
-    // console.log(vid); // testing prop
+  const renderedList = videos.map(vid => {
     return <VideoItem video={vid} />;
   });
 
-  return <div>{renderList}</div>;
+  return <div className='ui relaxed divided list'>{renderedList}</div>;
 };
 
 export default VideoList;
