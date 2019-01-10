@@ -1,10 +1,11 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import VideoList from "./VideoList";
+import VideoDetail from "./VideoDetail";
 import youtube from "../apis/youtube";
 
 class App extends React.Component {
-  state = { videos: [] };
+  state = { videos: [], selectedVideo: null };
 
   // A callback for search bar input submission
   onTermSubmit = async term => {
@@ -18,12 +19,20 @@ class App extends React.Component {
     this.setState({ videos: response.data.items });
   };
 
+  // A callback for a video list selection
+  onVideoSelect = video => {
+    this.setState({ selectedVideo: video });
+  };
+
   render() {
     return (
       <div className='ui container'>
-        <SearchBar uponSubmit={this.onTermSubmit} />I have{" "}
-        {this.state.videos.length}/5 videos
-        <VideoList videos={this.state.videos} />
+        <SearchBar uponSubmit={this.onTermSubmit} />
+        <VideoDetail video={this.state.selectedVideo} />
+        <VideoList
+          videos={this.state.videos}
+          onVideoSelect={this.onVideoSelect}
+        />
       </div>
     );
   }
