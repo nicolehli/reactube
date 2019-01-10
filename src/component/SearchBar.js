@@ -3,21 +3,20 @@ import React from "react";
 class SearchBar extends React.Component {
   state = { term: "" };
 
-  // Step 3: create callback
+  // Callback for form input new render
   onInputChange = event => {
     this.setState({ term: event.target.value });
   };
 
-  // Step 5: prevent return key to submit form / refresh page
+  // Prevent return key to submit form / refresh page
   onFormSubmit = event => {
     event.preventDefault();
 
-    // TODO: Callback from parent component from App component
+    // Invoke the prop we got from parent to pass searched term back to App.js
+    this.props.uponSubmit(this.state.term);
   };
 
-  // Step 1: render search input
-  // Step 2: make controlled element by setting search value property to state.term
-  // Step 4: make controlled element for form submit
+  // Controlled element by having (1) states and (2) onSubmit
   render() {
     return (
       <div className='search-bar ui segment'>

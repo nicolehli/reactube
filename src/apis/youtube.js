@@ -1,9 +1,7 @@
 import axios from "axios";
-import Config from ".../config.js";
+import * as Config from "../config";
 
 const KEY = Config.YOUTUBE_KEY;
-
-console.log(KEY);
 
 export default axios.create({
   baseURL: "https://www.googleapis.com/youtube/v3",
